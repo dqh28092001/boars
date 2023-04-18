@@ -11,8 +11,10 @@ import { Link } from "react-router-dom";
 import "./Boards.scss";
 import "./Modal/Modal.scss";
 import Modal from './Modal/Modal';
+import ModalDoing from './Modal/ModalDoing';
 
 import { FaTrello, FaSquarespace, FaHome, FaHeart, FaList, FaUser, FaAt, FaAtlas, FaUpload } from "react-icons/fa"
+import ModalClose from './Modal/ModalClose';
 
 const Boards = () => {
 
@@ -29,6 +31,11 @@ const Boards = () => {
 
 	// Modal
 	const [openModala, setOpenModala] = useState(false);
+
+	const [modalDoing, setModalDoing] = useState(false);
+
+	const [modalClose, setModalClose] = useState(false);
+
 
 
 
@@ -190,8 +197,14 @@ const Boards = () => {
 
 
 													<div>
-														<button className='modalBtn' onClick={() => setOpenModala(true)}>+</button>
-														<Modal open={openModala} onClose={() => setOpenModala(false)} />
+														<button
+															onClick={() => setModalDoing(true)}
+															className='modalDoingBtn'>
+															+
+														</button>
+														<ModalDoing
+															open={modalDoing}
+															onClose={() => setModalDoing(false)} />
 													</div>
 
 												</div>
@@ -415,10 +428,16 @@ const Boards = () => {
 							</div>
 
 
-							{/* <div>
-									<button className='modalBtn' onClick={() => setOpenModala(true)}>Xem tất cả các bảng đã đóng</button>
-									<Modal open={openModala} onClose={() => setOpenModala(false)} />
-								</div> */}
+							<div>
+								<button
+									onClick={() => setModalClose(true)}
+									className='modalCloseBtn'>
+									Xem tất cả các bảng đã đóng
+								</button>
+								<ModalClose
+									open={modalClose}
+									onClose={() => setModalClose(false)} />
+							</div>
 
 						</div>
 						{/* </div> */}
